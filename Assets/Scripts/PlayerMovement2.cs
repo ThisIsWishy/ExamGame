@@ -2,7 +2,7 @@ using System.Numerics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement2 : MonoBehaviour
 {
     private bool player1Left;
     private bool player1Right;
@@ -25,15 +25,15 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        player1Left = Input.GetKey(KeyCode.A);
-        player1Right = Input.GetKey(KeyCode.D);
+        player1Left = Input.GetKey(KeyCode.LeftArrow);
+        player1Right = Input.GetKey(KeyCode.RightArrow);
 
-        if (Input.GetKeyDown(KeyCode.W) && IsGrounded())
+        if (Input.GetKeyDown(KeyCode.UpArrow) && IsGrounded())
         {
             rb.linearVelocity = new UnityEngine.Vector2(rb.linearVelocity.x, jumpPower);
         }
 
-        if (Input.GetKeyUp(KeyCode.W) && rb.linearVelocity.y > 0f)
+        if (Input.GetKeyUp(KeyCode.UpArrow) && rb.linearVelocity.y > 0f)
         {
             rb.linearVelocity = new UnityEngine.Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
         }
@@ -62,3 +62,4 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 }
+

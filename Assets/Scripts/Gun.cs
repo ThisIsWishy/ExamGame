@@ -11,6 +11,13 @@ public class Gun2D : MonoBehaviour
  
     void Update()
     {
+        if (PlayerScript.playerControlActive)
+        {
+            Shoot();
+        }
+    }
+    void Shoot()
+    {
         if(Input.GetKeyDown(KeyCode.Space) && (PlayerScript.isFacingRight == true))
         {
             var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);

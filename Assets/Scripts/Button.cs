@@ -6,7 +6,8 @@ using UnityEngine.Rendering.Universal;
 public class Button : MoveBlockParent
 {
     public SpriteRenderer sr;
-    public float targetTime = 4f;
+    public BoxCollider2D bc;
+    private float targetTime = 4f;
     // Update is called once per frame
     void Update()
     {
@@ -14,12 +15,14 @@ public class Button : MoveBlockParent
         {
             targetTime -= Time.deltaTime;
             sr.enabled = false;
+            bc.enabled = false;
         }
 
         if (targetTime <= 0.0f)
         {
             hit = false;
             sr.enabled = true;
+            bc.enabled = true;
             targetTime = 4f;
         }
         

@@ -7,13 +7,8 @@ using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
 
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovementTEST : MonoBehaviour
 {
-    public PlayableDirector playableDirector;
-    public Camera cam1;
-    public Camera cam2;
-    public Camera cam3;
-    public Camera cam4;
     public bool playerControlActive = true;
     public bool isFacingRight = true;
     private bool playerLeft;
@@ -26,9 +21,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        cam1.enabled = true;
-        cam2.enabled = false;
-        cam3.enabled = false;
+        
     }
     public bool IsGrounded()
     {
@@ -108,37 +101,6 @@ public class PlayerMovement : MonoBehaviour
         {
             
             transform.position = new UnityEngine.Vector3(-5.09f,-2.73f);
-        }
-        if(collision.gameObject.name == "cam1")
-        {
-            if (!cam1.enabled)
-            {
-                transform.position = new UnityEngine.Vector3(transform.position.x-2f,transform.position.y);
-            }
-            cam1.enabled = true;
-            cam2.enabled = false;
-            cam4.enabled = false;
-        }
-        if(collision.gameObject.name == "cam2")
-        {
-            cam1.enabled = false;
-            cam2.enabled = true;
-            transform.position = new UnityEngine.Vector3(transform.position.x+1f,transform.position.y);
-        }
-        if(collision.gameObject.name == "cam3")
-        {
-            cam1.enabled = false;
-            cam2.enabled = false;
-            cam3.enabled = true;
-            transform.position = new UnityEngine.Vector3(24.84f,16.17f);
-            playableDirector.Play();
-        }
-        if(collision.gameObject.name == "cam4")
-        {
-            cam1.enabled = false;
-            cam2.enabled = false;
-            cam3.enabled = false;
-            cam4.enabled = true;
         }
         if(collision.gameObject.name == "winner")
         {

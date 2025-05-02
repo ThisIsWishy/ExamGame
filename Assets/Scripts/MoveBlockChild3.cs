@@ -2,10 +2,19 @@ using System;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-public class MoveBlockChild2 : MoveBlockParent
+public class MoveBlockChild3 : MoveBlockParent
 {
     [SerializeField] private float speed;
-    private float targetTime = 4f;
+    [SerializeField] private float distance;
+    [SerializeField] private float targetTime;
+    private float startTargetTime;
+    private float startPos;
+
+    void Start()
+    {
+        startPos = gameObject.transform.position.y;
+        startTargetTime = targetTime;
+    }
 
     // Update is called once per frame
     void Update()
@@ -24,20 +33,20 @@ public class MoveBlockChild2 : MoveBlockParent
 
     void MoveUp()
     {
-        if(gameObject.transform.position.y < 0.5f)
+        if(gameObject.transform.position.y < startPos+distance)
         {
             transform.position = new Vector2(transform.position.x,transform.position.y + speed * Time.deltaTime);
         }
     }
     void MoveDown()
     {
-        if(gameObject.transform.position.y > -1.54f)
+        if(gameObject.transform.position.y > startPos)
         {
             transform.position = new Vector2(transform.position.x,transform.position.y + -speed * Time.deltaTime);
         }
-        if(gameObject.transform.position.y <= -1.54f)
+        if(gameObject.transform.position.y <= startPos)
         {
-            targetTime = 4f;
+            targetTime = startTargetTime;
         }
     }
 }
